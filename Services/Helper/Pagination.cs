@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Hepler
+namespace Services.Helper
 {
     public class Pagination<T> where T : class
     {

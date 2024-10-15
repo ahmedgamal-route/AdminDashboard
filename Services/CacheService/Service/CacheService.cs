@@ -1,18 +1,18 @@
-﻿using Services.CasheService.Interface;
+﻿using Services.CacheService.Interface;
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace Services.CasheService.Service
+namespace Services.CacheService.Service
 {
-    public class CasheService : ICasheService
+    public class CacheService : ICacheService
     {
         private readonly IDatabase _dataBase;
-        public CasheService(IConnectionMultiplexer redis) 
+        public CacheService(IConnectionMultiplexer redis) 
         {
             _dataBase = redis.GetDatabase();
 
         }
-        public async Task<string> SetCasheResponseAsync(string cashKey, object response, TimeSpan timeToLive)
+        public async Task<string> SetCasheResponseAsync(string cachKey, object response, TimeSpan timeToLive)
         {
             if (response is null)
                 return null;
@@ -21,20 +21,20 @@ namespace Services.CasheService.Service
 
             var serializedResponse = JsonSerializer.Serialize(response, options);
 
-            await _dataBase.StringSetAsync(cashKey, serializedResponse, timeToLive);
+            await _dataBase.StringSetAsync(cachKey, serializedResponse, timeToLive);
 
-            return await GetCasheResponseAsync(cashKey);
+            return await GetCasheResponseAsync(cachKey);
 
         }
 
         public async Task<string> GetCasheResponseAsync(string cashKey)
         {
-            var cashedResponse = await _dataBase.StringGetAsync(cashKey);
+            var cachedResponse = await _dataBase.StringGetAsync(cashKey);
 
-            if (cashedResponse.IsNullOrEmpty)
+            if (cachedResponse.IsNullOrEmpty)
                 return null;
             
-            return cashedResponse;
+            return cachedResponse;
         }
 
     }

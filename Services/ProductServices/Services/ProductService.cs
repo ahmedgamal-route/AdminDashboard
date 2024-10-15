@@ -2,7 +2,7 @@
 using Core.Entities;
 using Infrastructure.Interfaces;
 using Infrastructure.Specification;
-using Services.Hepler;
+using Services.Helper;
 using Services.Interfaces;
 using Services.Services.Dto;
 using System;
@@ -25,7 +25,7 @@ namespace Services.Services
         }
         public async Task<Pagination<ProductResultDto>> GetAllProductAsync(ProductSpecification specification)
         {
-            var specs = new ProductsWithBrandsAndTypesspecification(specification);
+            var specs = new ProductsWithBrandsAndTypesSpecification(specification);
             var product = await _UnitOfWork.Reposatory<Product>().GetAllWithSpecificationsAsync(specs);
             //var totalCount = await _UnitOfWork.Reposatory<Product>().CountAsync(specs);
             var mapped = _Mapper.Map<IReadOnlyList<ProductResultDto>>(product);
@@ -41,7 +41,7 @@ namespace Services.Services
 
         public async Task<ProductResultDto> GetProductByIdAsync(int? id)
         {
-            var specs = new ProductsWithBrandsAndTypesspecification(id);
+            var specs = new ProductsWithBrandsAndTypesSpecification(id);
             var product = await _UnitOfWork.Reposatory<Product>().GetEntityWithSpecificationsAsync(specs);
             var mapped = _Mapper.Map<ProductResultDto>(product);
             return mapped;

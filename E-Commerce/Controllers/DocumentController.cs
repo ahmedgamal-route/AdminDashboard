@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Services.Helpers;
+using Services.Helper;
 
 namespace E_Commerce.Controllers
 {

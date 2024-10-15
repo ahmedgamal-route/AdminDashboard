@@ -3,7 +3,7 @@ using E_Commerce.HandelResponses;
 using E_Commerce.Helper;
 using Infrastructure.Specification;
 using Microsoft.AspNetCore.Mvc;
-using Services.Hepler;
+using Services.Helper;
 using Services.Interfaces;
 using Services.Services.Dto;
 
@@ -41,7 +41,7 @@ namespace E_Commerce.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-        [Cashe(100)]
+        [Cache(100)]
 
         public async Task<ActionResult<ProductResultDto>> GetProductById(int? id)
         {

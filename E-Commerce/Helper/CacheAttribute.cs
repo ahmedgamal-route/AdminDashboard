@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Services.CasheService.Interface;
+using Services.CacheService.Interface;
 using System.Text;
 
 namespace E_Commerce.Helper
 {
-    public class CasheAttribute : Attribute, IAsyncActionFilter
+    public class CacheAttribute : Attribute, IAsyncActionFilter
     {
         private readonly int _TimeToLiveInSec;
 
-        public CasheAttribute(int timeToLiveInSec)
+        public CacheAttribute(int timeToLiveInSec)
         {
             _TimeToLiveInSec = timeToLiveInSec;
         }
@@ -18,7 +18,7 @@ namespace E_Commerce.Helper
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var casheService = context.HttpContext.RequestServices.GetRequiredService<ICasheService>();
+            var casheService = context.HttpContext.RequestServices.GetRequiredService<ICacheService>();
 
             var casheKey = GenerateCasheKeyFromReqyest(context.HttpContext.Request);
 

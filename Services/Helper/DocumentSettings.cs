@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Services.Helpers
+namespace Services.Helper
 {
 	public class DocumentSettings
 	{

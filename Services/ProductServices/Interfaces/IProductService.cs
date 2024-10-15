@@ -1,6 +1,6 @@
 ﻿using Core.Entities;
 using Infrastructure.Specification;
-using Services.Hepler;
+using Services.Helper;
 using Services.Services.Dto;
 
 namespace Services.Interfaces

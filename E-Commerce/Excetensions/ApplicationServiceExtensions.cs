@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Services.BasketServices.Interfaces;
 using Services.BasketServices.Services;
 using Services.BasketServices.Services.Dto;
-using Services.CasheService.Interface;
-using Services.CasheService.Service;
+using Services.CacheService.Interface;
+using Services.CacheService.Service;
 using Services.Interfaces;
 using Services.OrderService.Interface;
 using Services.OrderService.Services;
@@ -34,7 +34,7 @@ namespace E_Commerce.Excetensions
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICasheService, CasheService>();
+            services.AddScoped<ICacheService, CacheService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPaymentService, PaymentService>();
 

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Specification
 {
-    public class ProductsWithBrandsAndTypesspecification : BaseSpecification<Product>
+    public class ProductsWithBrandsAndTypesSpecification : BaseSpecification<Product>
     {
-        public ProductsWithBrandsAndTypesspecification(ProductSpecification specification) 
+        public ProductsWithBrandsAndTypesSpecification(ProductSpecification specification) 
             : base(s => 
                 (!specification.BrandId.HasValue || s.ProductBrandId == specification.BrandId)
             &&
@@ -45,7 +45,7 @@ namespace Infrastructure.Specification
             }
 
         }
-        public ProductsWithBrandsAndTypesspecification(int? id)
+        public ProductsWithBrandsAndTypesSpecification(int? id)
             : base(s => s.Id==id)
         {
             AddInclude(p => p.ProductBrand);
